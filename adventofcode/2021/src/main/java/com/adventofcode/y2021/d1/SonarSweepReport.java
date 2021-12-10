@@ -1,0 +1,30 @@
+package com.adventofcode.y2021.d1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SonarSweepReport {
+  private List<Integer> seaFloorDepths = new ArrayList<>(0);
+
+  public SonarSweepReport(){
+      seaFloorDepths = new ArrayList<>(0);
+  }
+
+  public List<Integer> getSeaFloorDepths(){
+      return seaFloorDepths;
+  }
+
+  public void add(int depth){
+      seaFloorDepths.add(depth);
+  }
+
+  public void load(List<Integer> seaFloorDepths){
+      if(seaFloorDepths != null && seaFloorDepths.size() > 0) {
+          seaFloorDepths.clear();
+          for (Integer i : seaFloorDepths) {
+              System.out.println("Loading " + i.intValue());
+              seaFloorDepths.add(i);
+          }
+      }
+  }
+}
