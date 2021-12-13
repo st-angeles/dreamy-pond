@@ -22,10 +22,11 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class SonarSweepTest {
 
-    public  static final int EXAMPLE_EXPECTED_COUNT_INCREASES= 7;
+    public  static final int EXAMPLE_EXPECTED_COUNT_INCREASES = 7;
+    public  static final int EXAMPLE_EXPECTED_COUNT_INCREASE_3W = 5;
 
     public static  final int ANSWER_1 = 1121;
-    public static  final int ANSWER_2 = 2343233;
+    public static  final int ANSWER_2 = 1065;
 
     public static final List<Integer> seaFloorDepthsExample =
             Collections.unmodifiableList(Arrays.asList(199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ));
@@ -71,6 +72,30 @@ public class SonarSweepTest {
 
         assertEquals(ANSWER_1,sonarSweep.countIncreases());
         System.out.println("FIRST PUZZLE ANSWER IS " + ANSWER_1);
+    }
+
+    @Test
+    void testNumberOfIncrease3WindowsFromExample(){
+        when(sonarSweepReport.getSeaFloorDepths()).thenReturn(seaFloorDepthsExample);
+        assertEquals(sonarSweepReport,sonarSweep.getSonarSweepReport());
+        assertEquals(EXAMPLE_EXPECTED_COUNT_INCREASE_3W, sonarSweep.countIncreases3W());
+    }
+
+    @Test
+    @DisplayName("Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?")
+    void testNumberOfIncreases3WindowForPuzzleInput(){
+
+        sonarSweep = new SonarSweep();
+        assertThrows(RuntimeException.class, () -> sonarSweep.countIncreases());
+
+        sonarSweepReport = new SonarSweepReport();
+        sonarSweepReport.load(SonarSweepInput.SONAR_SWEEP_INPUT);
+
+        sonarSweep.setSonarSweepReport(sonarSweepReport);
+        assertEquals(sonarSweep.getSonarSweepReport().getSeaFloorDepths(), SonarSweepInput.SONAR_SWEEP_INPUT);
+
+        assertEquals(ANSWER_2,sonarSweep.countIncreases3W());
+        System.out.println("SECOND PUZZLE ANSWER IS " + ANSWER_2);
     }
 
 }

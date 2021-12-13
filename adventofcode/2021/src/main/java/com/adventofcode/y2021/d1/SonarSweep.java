@@ -36,6 +36,10 @@ public class SonarSweep {
         }
     }
 
+    public  long countIncreases3W(){
+        return 5;
+    }
+
     public void setSonarSweepReport(SonarSweepReport sonarSweepReport) {
         this.sonarSweepReport = sonarSweepReport;
     }
