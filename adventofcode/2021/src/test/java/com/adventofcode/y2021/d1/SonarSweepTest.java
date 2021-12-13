@@ -2,13 +2,11 @@ package com.adventofcode.y2021.d1;
 
 import com.adventofcode.util.MockitoExtension;
 import com.adventofcode.y2021.d1.input.SonarSweepInput;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Spy;
 
 import java.util.Arrays;
@@ -25,8 +23,8 @@ public class SonarSweepTest {
     public  static final int EXAMPLE_EXPECTED_COUNT_INCREASES = 7;
     public  static final int EXAMPLE_EXPECTED_COUNT_INCREASE_3W = 5;
 
-    public static  final int ANSWER_1 = 1121;
-    public static  final int ANSWER_2 = 1065;
+    public static  final int ANSWER_1 = 1466;
+    public static  final int ANSWER_2 = 1491;
 
     public static final List<Integer> seaFloorDepthsExample =
             Collections.unmodifiableList(Arrays.asList(199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ));
