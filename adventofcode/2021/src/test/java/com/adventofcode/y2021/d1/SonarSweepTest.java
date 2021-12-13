@@ -30,26 +30,17 @@ public class SonarSweepTest {
     public static final List<Integer> seaFloorDepthsExample =
             Collections.unmodifiableList(Arrays.asList(199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ));
 
-    SonarSweep sonarSweepPuzzle;
-    SonarSweepReport sonarSweepReportPuzzle;
-
     @InjectMocks
     SonarSweep sonarSweep;
 
-    @Mock
+    @Spy
     SonarSweepReport sonarSweepReport;
 
     List<Integer> seaFloorDepths;
 
     @BeforeEach
     void before(){
-
         seaFloorDepths = seaFloorDepthsExample;
-
-        sonarSweepReportPuzzle = new SonarSweepReport();
-        sonarSweepReportPuzzle.load(SonarSweepInput.SONAR_SWEEP_INPUT);
-        sonarSweepPuzzle = new SonarSweep();
-        sonarSweepPuzzle.setSonarSweepReport(sonarSweepReportPuzzle);
     }
 
     @Test
@@ -69,7 +60,16 @@ public class SonarSweepTest {
     @DisplayName("How many measurements are larger than the previous measurement?")
     void testNumberOfIncreasesForPuzzleInput(){
 
-        assertEquals(ANSWER_1,sonarSweepPuzzle.countIncreases());
+        sonarSweep = new SonarSweep();
+        assertThrows(RuntimeException.class, () -> sonarSweep.countIncreases());
+
+        sonarSweepReport = new SonarSweepReport();
+        sonarSweepReport.load(SonarSweepInput.SONAR_SWEEP_INPUT);
+
+        sonarSweep.setSonarSweepReport(sonarSweepReport);
+        assertEquals(sonarSweep.getSonarSweepReport().getSeaFloorDepths(), SonarSweepInput.SONAR_SWEEP_INPUT);
+
+        assertEquals(ANSWER_1,sonarSweep.countIncreases());
         System.out.println("FIRST PUZZLE ANSWER IS " + ANSWER_1);
     }
 
