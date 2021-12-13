@@ -37,7 +37,9 @@ public class SonarSweep {
     }
 
     public  long countIncreases3W(){
-        return 5;
+        sonarSweepReport.load(sonarSweepReport.getSeaFloorDepths3W());
+
+        return countIncreases();
     }
 
     public void setSonarSweepReport(SonarSweepReport sonarSweepReport) {

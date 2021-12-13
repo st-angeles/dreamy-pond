@@ -93,8 +93,9 @@ public class SonarSweepTest {
 
         sonarSweep.setSonarSweepReport(sonarSweepReport);
         assertEquals(sonarSweep.getSonarSweepReport().getSeaFloorDepths(), SonarSweepInput.SONAR_SWEEP_INPUT);
+        sonarSweepReport.load(sonarSweepReport.getSeaFloorDepths3W());
 
-        assertEquals(ANSWER_2,sonarSweep.countIncreases3W());
+        assertEquals(ANSWER_2,sonarSweep.countIncreases());
         System.out.println("SECOND PUZZLE ANSWER IS " + ANSWER_2);
     }
 

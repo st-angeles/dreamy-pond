@@ -12,7 +12,18 @@ public class SonarSweepReport {
   }
 
   public List<Integer> getSeaFloorDepths(){
+
       return Collections.unmodifiableList(seaFloorDepths);
+  }
+
+  public List<Integer> getSeaFloorDepths3W(){
+      List<Integer> depths3W = new ArrayList<>(0);
+      for( int i = 0 ; i < seaFloorDepths.size() - 3 ; i++){
+          int sum3W = seaFloorDepths.get(i) + seaFloorDepths.get(i + 1) + seaFloorDepths.get(i + 2);
+          depths3W.add(sum3W);
+      }
+
+      return Collections.unmodifiableList(depths3W);
   }
 
   public void add(int depth){
