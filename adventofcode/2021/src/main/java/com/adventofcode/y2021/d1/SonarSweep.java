@@ -6,6 +6,7 @@ public class SonarSweep {
 
     enum SweepLevel{
         N_A,
+        NO_CHANGE,
         DECREASED,
         INCREASED
     }
@@ -23,10 +24,15 @@ public class SonarSweep {
             levels.add(SweepLevel.N_A);
             for( int i = 1; i < depths.size(); i++) {
                 int diff = depths.get(i) - depths.get(i - 1);
-                if (diff > 0) {
-                    levels.add(SweepLevel.INCREASED);
+
+                if(diff == 0){
+                    levels.add(SweepLevel.NO_CHANGE);
                 } else {
-                    levels.add(SweepLevel.DECREASED);
+                    if (diff > 0) {
+                        levels.add(SweepLevel.INCREASED);
+                    } else {
+                        levels.add(SweepLevel.DECREASED);
+                    }
                 }
             }
             
@@ -37,9 +43,12 @@ public class SonarSweep {
     }
 
     public  long countIncreases3W(){
-        sonarSweepReport.load(sonarSweepReport.getSeaFloorDepths3W());
+        SonarSweepReport tmpReport = new SonarSweepReport();
+        tmpReport.load(sonarSweepReport.getSeaFloorDepths3W());
+        SonarSweep tmp = new SonarSweep();
+        tmp.setSonarSweepReport(tmpReport);
 
-        return countIncreases();
+        return tmp.countIncreases();
     }
 
     public void setSonarSweepReport(SonarSweepReport sonarSweepReport) {

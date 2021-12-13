@@ -31,6 +31,9 @@ public class SonarSweepTest {
     public static final List<Integer> seaFloorDepthsExample =
             Collections.unmodifiableList(Arrays.asList(199, 200, 208, 210, 200, 207, 240, 269, 260, 263 ));
 
+    public static final List<Integer> seaFloorDepths3WExample =
+            Collections.unmodifiableList(Arrays.asList(607, 618, 618, 617, 647, 716, 769, 792 ));
+
     @InjectMocks
     SonarSweep sonarSweep;
 
@@ -75,8 +78,8 @@ public class SonarSweepTest {
     }
 
     @Test
-    void testNumberOfIncrease3WindowsFromExample(){
-        when(sonarSweepReport.getSeaFloorDepths()).thenReturn(seaFloorDepthsExample);
+    void testNumberOfIncreases3WindowFromExample(){
+        when(sonarSweepReport.getSeaFloorDepths3W()).thenReturn(seaFloorDepths3WExample);
         assertEquals(sonarSweepReport,sonarSweep.getSonarSweepReport());
         assertEquals(EXAMPLE_EXPECTED_COUNT_INCREASE_3W, sonarSweep.countIncreases3W());
     }
@@ -84,7 +87,6 @@ public class SonarSweepTest {
     @Test
     @DisplayName("Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?")
     void testNumberOfIncreases3WindowForPuzzleInput(){
-
         sonarSweep = new SonarSweep();
         assertThrows(RuntimeException.class, () -> sonarSweep.countIncreases());
 
@@ -93,9 +95,8 @@ public class SonarSweepTest {
 
         sonarSweep.setSonarSweepReport(sonarSweepReport);
         assertEquals(sonarSweep.getSonarSweepReport().getSeaFloorDepths(), SonarSweepInput.SONAR_SWEEP_INPUT);
-        sonarSweepReport.load(sonarSweepReport.getSeaFloorDepths3W());
 
-        assertEquals(ANSWER_2,sonarSweep.countIncreases());
+        assertEquals(ANSWER_2,sonarSweep.countIncreases3W());
         System.out.println("SECOND PUZZLE ANSWER IS " + ANSWER_2);
     }
 
