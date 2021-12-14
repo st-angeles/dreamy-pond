@@ -22,11 +22,32 @@ public class Dive {
     }
 
     public int getHorizontalPosition(){
-        return 0;
+        if( plannedCourse == null) {
+            return 0;
+        }
+
+        return plannedCourse.stream()
+                            .filter(e -> e.getKey() == DiveDirection.forward)
+                            .mapToInt(e -> e.getValue())
+                            .sum();
     }
 
     public int getDepth(){
-        return 0;
+        if(plannedCourse == null) {
+            return 0;
+        }
+
+        int down = plannedCourse.stream()
+                                     .filter(e -> e.getKey() == DiveDirection.down)
+                                     .mapToInt(e -> e.getValue())
+                                     .sum();
+
+        int up = plannedCourse.stream()
+                                   .filter(e -> e.getKey() == DiveDirection.up)
+                                   .mapToInt(e -> e.getValue())
+                                   .sum();
+
+        return down - up;
     }
 
 }
