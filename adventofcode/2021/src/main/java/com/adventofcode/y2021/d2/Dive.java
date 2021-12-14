@@ -11,7 +11,7 @@ public class Dive {
         down
     }
 
-    private List<AbstractMap.SimpleImmutableEntry<DiveDirection, Integer>> plannedCourse;
+    protected List<AbstractMap.SimpleImmutableEntry<DiveDirection, Integer>> plannedCourse;
 
     public List<AbstractMap.SimpleImmutableEntry<DiveDirection, Integer>> getPlannedCourse() {
         return plannedCourse;
