@@ -1,6 +1,7 @@
 package com.adventofcode.y2021.d2;
 
 import com.adventofcode.y2021.d2.Dive.DiveDirection;
+import com.adventofcode.y2021.d2.input.DiveInput;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.mockito.InjectMocks;
 
+import javax.management.DescriptorKey;
 import java.util.*;
 
 public class DiveTest {
@@ -24,6 +26,9 @@ public class DiveTest {
 
     public static final int EXPECTED_HORIZ_POS_EXAMPLE = 15;
     public static final int EXPECTED_DEPTH_EXAMPLE = 10;
+
+    public static final int EXPECTED_HORIZ_POS_PUZZLE = 1970;
+    public static final int EXPECTED_DEPTH_PUZZLE = 916;
 
     Dive dive;
 
@@ -48,16 +53,38 @@ public class DiveTest {
     }
 
     @Test
-    @DisplayName("Given the example input then the horizontal position is 15")
+    @DisplayName("Given the example input then the final horizontal position is 15")
     void testHorizontalPositionFromExample(){
         dive.setPlannedCourse(CONTROL_COURSE_EXAMPLE);
         assertEquals(EXPECTED_HORIZ_POS_EXAMPLE,dive.getHorizontalPosition());
     }
 
     @Test
-    @DisplayName("Given the example input then the depth is 10")
-    void testDiveFromExample(){
+    @DisplayName("Given the example input then the final depth is 10")
+    void testDepthFromExample(){
         dive.setPlannedCourse(CONTROL_COURSE_EXAMPLE);
         assertEquals(EXPECTED_DEPTH_EXAMPLE, dive.getDepth());
+    }
+
+    @Test
+    @DisplayName("Given the puzzle input then the final horizontal position is " + EXPECTED_HORIZ_POS_PUZZLE)
+    void testHorizontalPositionFromPuzzleInput(){
+        dive.setPlannedCourse(DiveInput.DIVE_INPUT);
+        assertEquals(EXPECTED_HORIZ_POS_PUZZLE,dive.getHorizontalPosition());
+    }
+
+    @Test
+    @DisplayName("Given the puzzle input then the final depth is " + EXPECTED_DEPTH_PUZZLE)
+    void testDepthFromPuzzleInput(){
+        dive.setPlannedCourse(DiveInput.DIVE_INPUT);
+        assertEquals(EXPECTED_DEPTH_PUZZLE, dive.getDepth());
+    }
+
+    @Test
+    @DisplayName("What do you get if you multiply your final horizontal position by your final depth?")
+    void testAnswer1FromPuzzleInput(){
+        dive.setPlannedCourse(DiveInput.DIVE_INPUT);
+        assertEquals(EXPECTED_HORIZ_POS_PUZZLE * EXPECTED_DEPTH_PUZZLE, dive.getHorizontalPosition() * dive.getDepth());
+        System.out.println("FIRST PUZZLE ANSWER IS " + (EXPECTED_DEPTH_PUZZLE * EXPECTED_HORIZ_POS_PUZZLE));
     }
 }
