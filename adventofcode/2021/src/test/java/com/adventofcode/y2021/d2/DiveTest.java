@@ -56,6 +56,7 @@ public class DiveTest {
     @DisplayName("Given the example input then the final horizontal position is 15")
     void testHorizontalPositionFromExample(){
         dive.setPlannedCourse(CONTROL_COURSE_EXAMPLE);
+        assertEquals(CONTROL_COURSE_EXAMPLE, dive.getPlannedCourse());
         assertEquals(EXPECTED_HORIZ_POS_EXAMPLE,dive.getHorizontalPosition());
     }
 
@@ -63,6 +64,7 @@ public class DiveTest {
     @DisplayName("Given the example input then the final depth is 10")
     void testDepthFromExample(){
         dive.setPlannedCourse(CONTROL_COURSE_EXAMPLE);
+        assertEquals(CONTROL_COURSE_EXAMPLE, dive.getPlannedCourse());
         assertEquals(EXPECTED_DEPTH_EXAMPLE, dive.getDepth());
     }
 
