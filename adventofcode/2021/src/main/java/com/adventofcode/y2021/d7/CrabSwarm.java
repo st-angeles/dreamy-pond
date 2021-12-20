@@ -20,6 +20,14 @@ public class CrabSwarm {
     }
 
     public int getMinTotalRequiredFuel(){
-        return 37;
+        int minFuel = Integer.MAX_VALUE;
+        for(Crab c : crabs){
+            int fuel = getTotalRequiredFuel(c.getHorizontalPosition());
+            if(fuel < minFuel) {
+                minFuel = fuel;
+            }
+        }
+
+        return minFuel;
     }
 }

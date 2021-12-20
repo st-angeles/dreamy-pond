@@ -31,6 +31,8 @@ public class CrabSwarmTest {
 
     public static final int EXPECTED_MIN_FUEL_FROM_EXAMPLE = 37;
 
+    public static final int EXPECTED_MIN_FUEL_FROM_PUZZLE_INPUT = 329389;
+
     @BeforeEach
     void beforeEach(){
         crabSwarm =  new CrabSwarm();
@@ -44,9 +46,10 @@ public class CrabSwarmTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("How much fuel must they spend to align to that position?")
     void testMinRequiredFuelForPuzzleInput(){
         crabSwarm.setCrabs(CrabSwarmInput.CRABS_INPUT);
-        assertEquals(0,crabSwarm.getMinTotalRequiredFuel());
+        assertEquals(EXPECTED_MIN_FUEL_FROM_PUZZLE_INPUT,crabSwarm.getMinTotalRequiredFuel());
+        System.out.println("FIRST PUZZLE ANSWER IS " + EXPECTED_MIN_FUEL_FROM_PUZZLE_INPUT);
     }
 }
