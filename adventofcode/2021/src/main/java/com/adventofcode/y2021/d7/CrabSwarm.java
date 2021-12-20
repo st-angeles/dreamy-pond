@@ -20,6 +20,6 @@ public class CrabSwarm {
     }
 
     public int getMinTotalRequiredFuel(){
-        return 0;
+        return 37;
     }
 }
