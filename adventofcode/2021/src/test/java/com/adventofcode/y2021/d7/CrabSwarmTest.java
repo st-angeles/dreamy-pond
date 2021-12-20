@@ -1,5 +1,6 @@
 package com.adventofcode.y2021.d7;
 
+import com.adventofcode.y2021.d7.input.CrabSwarmInput;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -40,5 +41,12 @@ public class CrabSwarmTest {
     void testMinRequiredFuelForExampleInput(){
         crabSwarm.setCrabs(CRABS_INPUT_FROM_EXAMPLE);
         assertEquals(EXPECTED_MIN_FUEL_FROM_EXAMPLE, crabSwarm.getMinTotalRequiredFuel());
+    }
+
+    @Test
+    @DisplayName("")
+    void testMinRequiredFuelForPuzzleInput(){
+        crabSwarm.setCrabs(CrabSwarmInput.CRABS_INPUT);
+        assertEquals(0,crabSwarm.getMinTotalRequiredFuel());
     }
 }
