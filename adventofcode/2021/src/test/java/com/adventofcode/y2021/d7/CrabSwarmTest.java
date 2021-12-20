@@ -30,6 +30,7 @@ public class CrabSwarmTest {
     ));
 
     public static final int EXPECTED_MIN_FUEL_FROM_EXAMPLE = 37;
+    public static final int EXPECTED_NEW_MIN_FUEL_FROM_EXAMPLE = 168;
 
     public static final int EXPECTED_MIN_FUEL_FROM_PUZZLE_INPUT = 329389;
 
@@ -51,5 +52,12 @@ public class CrabSwarmTest {
         crabSwarm.setCrabs(CrabSwarmInput.CRABS_INPUT);
         assertEquals(EXPECTED_MIN_FUEL_FROM_PUZZLE_INPUT,crabSwarm.getMinTotalRequiredFuel());
         System.out.println("FIRST PUZZLE ANSWER IS " + EXPECTED_MIN_FUEL_FROM_PUZZLE_INPUT);
+    }
+
+    @Test
+    @DisplayName("Given a swarm of crabs when their horizontal position matches the example in the input then the NEW minimum required fuel is " + EXPECTED_NEW_MIN_FUEL_FROM_EXAMPLE )
+    void testMinRequiredFuelFromExampleInput(){
+        crabSwarm.setCrabs(CRABS_INPUT_FROM_EXAMPLE);
+        assertEquals(EXPECTED_NEW_MIN_FUEL_FROM_EXAMPLE, crabSwarm.getMinTotalRequiredFuel());
     }
 }
